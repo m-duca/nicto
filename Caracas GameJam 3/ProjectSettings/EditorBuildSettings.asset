@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Bathroom.unity
     guid: 0107bf27eef2643458e6b75f6c294d8e
+  - enabled: 1
+    path: Assets/_Game/Scenes/Sala (Late).unity
+    guid: 356099f55d0c3b74c9db38d83a641dc6
+  - enabled: 1
+    path: Assets/_Game/Scenes/Stairs (Middle).unity
+    guid: 69f7384f6e749be43b24a6ec57a51edd
   m_configObjects: {}

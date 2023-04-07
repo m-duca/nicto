@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 moveDir;
     [SerializeField] private Transform[] triggers;
+    [SerializeField] private float triggerCooldownTime;
 
     // Components
     private Rigidbody2D _rb;
@@ -46,21 +47,21 @@ public class EnemyMovement : MonoBehaviour
             _fade.StartFade(FadeVFX.FadeType.FadeOut);
             if (col.gameObject.transform == triggers[0])
             {
-                StartCoroutine(TriggerCooldown(triggers[1].gameObject.GetComponent<BoxCollider2D>()));
+                StartCoroutine(TriggerCooldown(triggerCooldownTime, triggers[1].gameObject.GetComponent<BoxCollider2D>()));
                 _warpPos = triggers[1].position;
             }
             else
             {
-                StartCoroutine(TriggerCooldown(triggers[0].gameObject.GetComponent<BoxCollider2D>()));
+                StartCoroutine(TriggerCooldown(triggerCooldownTime, triggers[0].gameObject.GetComponent<BoxCollider2D>()));
                 _warpPos = triggers[0].position;
             }
         }
     }
 
-    private IEnumerator TriggerCooldown(BoxCollider2D hitbox)
+    private IEnumerator TriggerCooldown(float t, BoxCollider2D hitbox)
     {
         hitbox.enabled = false;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(t);
         hitbox.enabled = true;
     }
 }

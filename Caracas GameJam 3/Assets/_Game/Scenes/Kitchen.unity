@@ -270,7 +270,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 596242089296161969, guid: 3d3594635f35f15439bcf04feeeb54b6, type: 3}
       propertyPath: scene
-      value: Stairs
+      value: Sala (Late)
       objectReference: {fileID: 0}
     - target: {fileID: 596242089296161972, guid: 3d3594635f35f15439bcf04feeeb54b6, type: 3}
       propertyPath: m_Name
