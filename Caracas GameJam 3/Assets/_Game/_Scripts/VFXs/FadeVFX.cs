@@ -8,8 +8,11 @@ public class FadeVFX : MonoBehaviour
     [SerializeField] private float fadeInSpeed;
     [SerializeField] private float fadeOutSpeed;
 
-    private bool isFading = false;
+    [HideInInspector] public bool isFading = false;
     private FadeType type;
+    private int lampLayer = 8;
+    private int switchLayer = 10;
+    private int enemyLayer = 3;
 
     public enum FadeType
     {
@@ -52,7 +55,14 @@ public class FadeVFX : MonoBehaviour
             else
             {
                 isFading = false;
-                if (gameObject.layer == 8) gameObject.transform.parent.GetComponent<LampStatus>().IsOn = true;
+                if (gameObject.layer == lampLayer)
+                {
+                    gameObject.transform.parent.GetComponent<LampStatus>().IsOn = true;
+                }
+                else if (gameObject.layer == enemyLayer)
+                {
+                    StartCoroutine(EnemyAppearing());
+                }
             }
         }
         else
@@ -66,13 +76,23 @@ public class FadeVFX : MonoBehaviour
             else
             {
                 isFading = false;
-                if (gameObject.layer == 8)
+                if (gameObject.layer == lampLayer)
                 {
                     var lampStatus = gameObject.transform.parent.GetComponent<LampStatus>();
                     lampStatus.IsOn = false;
                     lampStatus.VisibleDark = false;
                 }
+                else if (gameObject.layer == switchLayer)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
+    }
+
+    private IEnumerator EnemyAppearing()
+    {
+        yield return new WaitForSeconds(1f);
+        StartFade(FadeType.FadeIn);
     }
 }

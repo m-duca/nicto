@@ -16,6 +16,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private int enemyLayer;
     [SerializeField] private int lampLayer;
     [SerializeField] private int switchLayer;
+    [SerializeField] private int objectiveLayer;
 
     // Components
     private SpriteRenderer _spr;
@@ -27,10 +28,13 @@ public class PlayerCollision : MonoBehaviour
     private Switch _currentSwitch;
 
     // Sort Order
-    private int _defaultOrder;
+    //private int _defaultOrder;
 
     // Decrease Score
     private bool _isDecreasing = false;
+
+    // Objective
+    private ObjectiveTrigger _currentObjective;
 
     private enum GameOvers
     {
@@ -42,7 +46,7 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         _spr = GetComponent<SpriteRenderer>();
-        _defaultOrder = _spr.sortingOrder;
+        //_defaultOrder = _spr.sortingOrder;
 
         if (Score != 0)
         {
@@ -63,6 +67,11 @@ public class PlayerCollision : MonoBehaviour
             _currentSwitch.ChangeLamps();
         }
 
+        if (Input.GetButtonDown("Jump") && _currentObjective != null)
+        {
+            _currentObjective.CompleteObjective();
+        }
+
         if (Score != 0 && !_isDecreasing)
         {
             _isDecreasing = true;
@@ -81,16 +90,25 @@ public class PlayerCollision : MonoBehaviour
         {
             _currentSwitch = col.gameObject.GetComponent<Switch>();
         }
+        else if (col.gameObject.layer == objectiveLayer)
+        {
+            _currentObjective = col.gameObject.GetComponent<ObjectiveTrigger>();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.layer == switchLayer)
         {
+            _currentSwitch.StartCooldown();
             _currentSwitch = null;
         }
+        else if (col.gameObject.layer == objectiveLayer)
+        {
+            _currentObjective = null;
+        }
 
-        if (col.gameObject.layer == lampLayer) _spr.sortingOrder = _defaultOrder;
+        //if (col.gameObject.layer == lampLayer) _spr.sortingOrder = _defaultOrder;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -103,7 +121,7 @@ public class PlayerCollision : MonoBehaviour
         if (col.gameObject.layer == lampLayer)
         {
             var lamp = col.gameObject.GetComponent<LampStatus>();
-            _spr.sortingOrder = lamp.darkSpr.sortingOrder;
+            //_spr.sortingOrder = lamp.darkSpr.sortingOrder;
 
             if (lamp.VisibleDark && !lamp.IsOn)
             {

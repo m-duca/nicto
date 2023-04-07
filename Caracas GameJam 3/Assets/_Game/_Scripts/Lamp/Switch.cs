@@ -10,9 +10,14 @@ public class Switch : MonoBehaviour
     [SerializeField] private Animator lampIcon;
     public SpriteRenderer LampIconSpr;
     [SerializeField] private Switch nextSwitch;
+    [SerializeField] private float cooldownTime;
 
     [HideInInspector] public BoxCollider2D Hitbox;
     [HideInInspector] public bool AlreadyScored = false;
+
+    // Components
+    [SerializeField] private FadeVFX _fade;
+    [SerializeField] private bool canFade;
 
     private void Awake()
     {
@@ -31,6 +36,8 @@ public class Switch : MonoBehaviour
     private void Update()
     {
         lampIcon.SetBool("isOn", !lamps[0].IsOn);
+
+        if (!lamps[0].IsOn && !lamps[0].VisibleDark && canFade) _fade.StartFade(FadeVFX.FadeType.FadeOut);
     }
 
     public void ChangeLamps()
@@ -45,5 +52,20 @@ public class Switch : MonoBehaviour
             nextSwitch.LampIconSpr.enabled = true;
             nextSwitch.Hitbox.enabled = true;
         }
+    }
+
+    public void StartCooldown()
+    {
+        if (lamps[0].IsFalling)
+        {
+            Hitbox.enabled = false;
+            StartCoroutine(SetCooldown(cooldownTime));
+        }
+    }
+
+    private IEnumerator SetCooldown(float t)
+    {
+        yield return new WaitForSeconds(t);
+        Hitbox.enabled = true;
     }
 }

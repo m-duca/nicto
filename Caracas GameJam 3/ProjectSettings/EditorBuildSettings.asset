@@ -11,4 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Game/Scenes/Corridor 1.unity
     guid: d7f32baa227f8a847868665fa9b32e53
+  - enabled: 1
+    path: Assets/_Game/Scenes/Corridor 2.unity
+    guid: 62485001cfdd8c5469554c627d2836da
+  - enabled: 1
+    path: Assets/_Game/Scenes/Sala.unity
+    guid: 3e20ceb2586843f46a7a7e71b1fd2c0d
+  - enabled: 1
+    path: Assets/_Game/Scenes/Stairs.unity
+    guid: 6361fd4f027623d488d41acc9a96c66d
+  - enabled: 1
+    path: Assets/_Game/Scenes/Kitchen.unity
+    guid: ca74ba1a1d59b8245bdcecdea1ff2681
+  - enabled: 1
+    path: Assets/_Game/Scenes/Bathroom.unity
+    guid: 0107bf27eef2643458e6b75f6c294d8e
   m_configObjects: {}

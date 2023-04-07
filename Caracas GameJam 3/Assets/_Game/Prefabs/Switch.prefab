@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 138246729461170474}
   - component: {fileID: 138246729461170485}
   - component: {fileID: 138246729461170484}
+  - component: {fileID: 7124556274315383147}
   m_Layer: 7
   m_Name: Lamp Sprite
   m_TagString: Untagged
@@ -105,6 +106,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &7124556274315383147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138246729461170475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a0ab78114cc244c9610a4b3b8a7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInSpeed: 0
+  fadeOutSpeed: 0.5
 --- !u!1 &138246730603225015
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,4 +196,8 @@ MonoBehaviour:
   lampIcon: {fileID: 138246729461170484}
   LampIconSpr: {fileID: 138246729461170485}
   nextSwitch: {fileID: 0}
+  cooldownTime: 5
   Hitbox: {fileID: 0}
+  AlreadyScored: 0
+  _fade: {fileID: 7124556274315383147}
+  canFade: 1

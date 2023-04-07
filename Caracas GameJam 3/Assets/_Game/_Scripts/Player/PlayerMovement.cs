@@ -5,8 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Unity Access Fields
-    [Header("Horizontal Movement:")]
-    [SerializeField] private float maxSpeed;
+    [Header("Horizontal Movement:")] [SerializeField]
+    private float maxSpeed;
+
     [SerializeField] private float acceleration;
 
     // Components
@@ -15,14 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Animator _anim;
 
     private Vector2 _moveInput;
-    
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
     }
-    
+
     private void Update()
     {
         Animate();
@@ -50,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         var velDifferenceX = goal.x - curVel.x;
         var velDifferenceY = goal.y - curVel.y;
-        
+
         if (velDifferenceX > accel) move.x = curVel.x + accel;
         else if (velDifferenceX < -accel) move.x = curVel.x - accel;
         else move.x = goal.x;
@@ -58,10 +59,10 @@ public class PlayerMovement : MonoBehaviour
         if (velDifferenceY > accel) move.y = curVel.y + accel;
         else if (velDifferenceY < -accel) move.y = curVel.y - accel;
         else move.y = goal.y;
-        
+
         return move;
     }
-    
+
     private void ApplyMove()
     {
         _rb.velocity = SetVelocity(maxSpeed * _moveInput, _rb.velocity, acceleration);

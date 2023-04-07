@@ -158,6 +158,7 @@ MonoBehaviour:
   enemyLayer: 3
   lampLayer: 6
   switchLayer: 7
+  objectiveLayer: 10
 --- !u!95 &2862487986247305778
 Animator:
   serializedVersion: 5
