@@ -5,7 +5,8 @@ using UnityEngine;
 public class FadeVFX : MonoBehaviour
 {
     // Unity Access Fields
-    [SerializeField] private float speed;
+    [SerializeField] private float fadeInSpeed;
+    [SerializeField] private float fadeOutSpeed;
 
     private bool isFading = false;
     private FadeType type;
@@ -44,7 +45,7 @@ public class FadeVFX : MonoBehaviour
         {
             if (alpha > 0.0f)
             {
-                alpha -= speed * Time.deltaTime;
+                alpha -= fadeOutSpeed * Time.deltaTime;
                 color.a = alpha;
                 _spr.color = color;
             }
@@ -58,7 +59,7 @@ public class FadeVFX : MonoBehaviour
         {
             if (alpha < 1.0f)
             {
-                alpha += speed * Time.deltaTime;
+                alpha += fadeInSpeed * Time.deltaTime;
                 color.a = alpha;
                 _spr.color = color;
             }

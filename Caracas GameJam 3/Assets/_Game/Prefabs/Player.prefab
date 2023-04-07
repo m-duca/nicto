@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1406a6ac4a6b418c0186908d839a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
-  acceleration: 6
+  maxSpeed: 6
+  acceleration: 2
 --- !u!114 &2862487986247305781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dee7b141b2d62442a38793972f91091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  increase: 50
+  decreaseScoreTime: 2
+  decrease: 2
   enemyLayer: 3
   lampLayer: 6
   switchLayer: 7

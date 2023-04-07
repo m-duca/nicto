@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsOn: 0
+  IsFalling: 0
   VisibleDark: 1
   dark: {fileID: 2674386269135471562}
   darkSpr: {fileID: 2674386269135471563}
@@ -173,4 +174,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a0ab78114cc244c9610a4b3b8a7b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  fadeInSpeed: 0.2
+  fadeOutSpeed: 1

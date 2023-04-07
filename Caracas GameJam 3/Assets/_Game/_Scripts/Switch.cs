@@ -12,11 +12,15 @@ public class Switch : MonoBehaviour
     [SerializeField] private Switch nextSwitch;
 
     [HideInInspector] public BoxCollider2D Hitbox;
+    [HideInInspector] public bool AlreadyScored = false;
+
+    private void Awake()
+    {
+        Hitbox = GetComponent<BoxCollider2D>();
+    }
 
     private void Start()
     {
-        Hitbox = GetComponent<BoxCollider2D>();
-
         if (nextSwitch != null)
         {
             nextSwitch.LampIconSpr.enabled = false;
