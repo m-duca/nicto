@@ -9,13 +9,19 @@ public class PlayerCollision : MonoBehaviour
     [Header("Collision Layers:")] 
     [SerializeField] private int enemyLayer;
     [SerializeField] private int lampLayer;
+    [SerializeField] private int switchLayer;
 
-    [Header("Score:")] 
-    [SerializeField] private float scoreCoolDown;
+    // Components
+    private SpriteRenderer _spr;
 
     // Score
     public static int Score = 0;
-    private bool _canScore = true;
+
+    // Switch
+    private Switch _currentSwitch;
+
+    // Sort Order
+    private int _defaultOrder;
 
     private enum GameOvers
     {
@@ -24,13 +30,42 @@ public class PlayerCollision : MonoBehaviour
         Dark
     }
 
+    private void Start()
+    {
+        _spr = GetComponent<SpriteRenderer>();
+        _defaultOrder = _spr.sortingOrder;
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Jump") && _currentSwitch != null)
+        {
+            if (_currentSwitch.lamps[0].VisibleDark) ChangeScore(100);
+            _currentSwitch.ChangeLamps();
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.layer == lampLayer)
         {
             var lamp = col.gameObject.GetComponent<LampStatus>();
-            if (!lamp.IsOn()) GameOver(GameOvers.Dark);
+            if (!lamp.IsOn && !lamp.VisibleDark) GameOver(GameOvers.Dark);
         }
+        else if (col.gameObject.layer == switchLayer)
+        {
+            _currentSwitch = col.gameObject.GetComponent<Switch>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.layer == switchLayer)
+        {
+            _currentSwitch = null;
+        }
+
+        if (col.gameObject.layer == lampLayer) _spr.sortingOrder = _defaultOrder;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -39,22 +74,8 @@ public class PlayerCollision : MonoBehaviour
         {
             GameOver(GameOvers.Monster);
         }
-        else if (col.gameObject.layer == lampLayer)
-        {
-            var lamp = col.gameObject.GetComponent<LampStatus>();
-            if (lamp.IsOn() && _canScore)
-            {
-                _canScore = false;
-                ChangeScore(lamp.ScoreValue);
-                StartCoroutine(SetScoreCooldown(scoreCoolDown));
-            }
-        }
-    }
 
-    private IEnumerator SetScoreCooldown(float t)
-    {
-        yield return new WaitForSeconds(t);
-        _canScore = true;
+        if (col.gameObject.layer == lampLayer) _spr.sortingOrder = col.gameObject.GetComponent<LampStatus>().darkSpr.sortingOrder;
     }
 
     private void ChangeScore(int value)

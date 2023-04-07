@@ -5,51 +5,27 @@ using UnityEngine;
 public class LampStatus : MonoBehaviour
 {
     // Unity Access Fields
-    [Header("Lamp Sprites:")]
-    [SerializeField] private Sprite lampOn;
-    [SerializeField] private Sprite lampOff;
-
-    [Header("Timer:")] 
-    [SerializeField] private float changeTime;
-
     [Header("Status:")]
-    [SerializeField] private bool isOn = false;
+    public bool IsOn = false;
+    public bool IsFalling = false;
+    public bool VisibleDark = true;
 
     [Header("Dark:")] 
     [SerializeField] private FadeVFX dark;
+    public SpriteRenderer darkSpr;
 
-    [Header("Score:")] 
-    public int ScoreValue;
-
-    // Components
-    private SpriteRenderer _spr;
-
-    private void Start()
+    public void ChangeLight()
     {
-        _spr = GetComponent<SpriteRenderer>();
-        StartCoroutine(ChangeStatus(changeTime));
-    }
-
-    private IEnumerator ChangeStatus(float t)
-    {
-        yield return new WaitForSeconds(t);
-        isOn = !isOn;
-        if (_spr.sprite == lampOn)
+        IsOn = !IsOn;
+        if (IsOn)
         {
-            _spr.sprite = lampOff;
-            dark.StartFade(FadeVFX.FadeType.FadeIn);
+            dark.StartFade(FadeVFX.FadeType.FadeOut);
+            IsFalling = false;
         }
         else
         {
-            _spr.sprite = lampOn;
-            dark.StartFade(FadeVFX.FadeType.FadeOut);
+            dark.StartFade(FadeVFX.FadeType.FadeIn); 
+            IsFalling = true;
         }
-
-        StartCoroutine(ChangeStatus(changeTime));
-    }
-
-    public bool IsOn()
-    {
-        return isOn;
     }
 }

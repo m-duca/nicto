@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer: 3
   lampLayer: 6
-  scoreCoolDown: 0
+  switchLayer: 7
 --- !u!95 &2862487986247305778
 Animator:
   serializedVersion: 5

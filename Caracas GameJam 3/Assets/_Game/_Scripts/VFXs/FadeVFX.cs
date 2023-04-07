@@ -51,6 +51,7 @@ public class FadeVFX : MonoBehaviour
             else
             {
                 isFading = false;
+                if (gameObject.layer == 8) gameObject.transform.parent.GetComponent<LampStatus>().IsOn = true;
             }
         }
         else
@@ -64,6 +65,12 @@ public class FadeVFX : MonoBehaviour
             else
             {
                 isFading = false;
+                if (gameObject.layer == 8)
+                {
+                    var lampStatus = gameObject.transform.parent.GetComponent<LampStatus>();
+                    lampStatus.IsOn = false;
+                    lampStatus.VisibleDark = false;
+                }
             }
         }
     }
