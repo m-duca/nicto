@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class BlinkSpriteVFX : MonoBehaviour
+
+public class BlinkTextVFX : MonoBehaviour
 {
     [SerializeField] private float time;
     [SerializeField] private float interval;
@@ -10,13 +12,13 @@ public class BlinkSpriteVFX : MonoBehaviour
     [SerializeField] private bool undefined;
 
     // Components
-    private SpriteRenderer _spr;
+    private TextMeshProUGUI _txt;
 
     private bool _isBlinking = false;
 
     private void Awake()
     {
-        _spr = GetComponent<SpriteRenderer>();
+        _txt = GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -35,12 +37,12 @@ public class BlinkSpriteVFX : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         _isBlinking = false;
-        _spr.enabled = true;
+        _txt.enabled = true;
     }
 
     private IEnumerator ApplyBlink(float time)
     {
-        _spr.enabled = !_spr.enabled;
+        _txt.enabled = !_txt.enabled;
         yield return new WaitForSeconds(time);
         if (_isBlinking) StartCoroutine(ApplyBlink(interval));
     }

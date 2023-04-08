@@ -7,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
 {
     [Header("Increase Score:")] 
     [SerializeField] private int increase;
+    [SerializeField] private GameObject scoreIconPrefab;
 
     [Header("Decrease Score:")]
     [SerializeField] private float decreaseScoreTime;
@@ -66,6 +67,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 ChangeScore(increase);
                 _currentSwitch.AlreadyScored = true;
+                Instantiate(scoreIconPrefab, transform.position, Quaternion.identity);
             }
             _currentSwitch.ChangeLamps();
         }

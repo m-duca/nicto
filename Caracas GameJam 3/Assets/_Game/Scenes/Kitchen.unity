@@ -2115,6 +2115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2862487986247305781, guid: 027c18d59589c9043b6a2c4968194ad0, type: 3}
+      propertyPath: scoreIconPrefab
+      value: 
+      objectReference: {fileID: 4394188491903594379, guid: a9d0de5e5d8ea8b4da82798e4d61c62d, type: 3}
     - target: {fileID: 2862487986247305788, guid: 027c18d59589c9043b6a2c4968194ad0, type: 3}
       propertyPath: m_Name
       value: Player
