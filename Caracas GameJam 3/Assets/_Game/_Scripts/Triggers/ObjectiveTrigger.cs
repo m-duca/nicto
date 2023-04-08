@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ObjectiveTrigger : MonoBehaviour
 {
+    public string Level;
     [SerializeField] private GameObject[] objectiveArrows;
     [SerializeField] private GameObject[] nextArrows;
     [SerializeField] private GameObject levelTrigger;
@@ -16,6 +18,11 @@ public class ObjectiveTrigger : MonoBehaviour
     [SerializeField] private Sprite checkSpr;
 
     private bool completed = false;
+
+    private void Start()
+    {
+        Level = SceneManager.GetActiveScene().name;
+    }
 
     public void CompleteObjective()
     {

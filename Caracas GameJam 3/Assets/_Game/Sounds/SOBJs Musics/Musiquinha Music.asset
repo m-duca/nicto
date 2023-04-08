@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57afe30bdb586349b9a13a32f5f0953, type: 3}
+  m_Name: Musiquinha Music
+  m_EditorClassIdentifier: 
+  Clip: {fileID: 8300000, guid: bf9a78ae85fe9024b8b7d3aa03d1b2d2, type: 3}
+  Volume: 1

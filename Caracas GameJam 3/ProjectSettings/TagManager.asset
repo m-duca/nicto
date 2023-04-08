@@ -8,6 +8,7 @@ TagManager:
   - Left
   - Up
   - Down
+  - Audio
   layers:
   - Default
   - TransparentFX

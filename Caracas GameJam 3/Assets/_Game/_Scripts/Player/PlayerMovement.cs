@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Unity Access Fields
-    [Header("Horizontal Movement:")] [SerializeField]
-    private float maxSpeed;
-
+    [Header("Horizontal Movement:")] 
+    [SerializeField] private float maxSpeed;
     [SerializeField] private float acceleration;
+
+    // References
+    private AudioManager _audioManager;
 
     // Components
     private Rigidbody2D _rb;
@@ -17,18 +20,34 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 _moveInput;
 
+    private bool _canPlayMoveSFX = true;
+
+    public bool CanMove = true;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _spr = GetComponent<SpriteRenderer>();
         _anim = GetComponent<Animator>();
+
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        _audioManager.PlayMusic("Musiquinha");
     }
 
     private void Update()
     {
-        Animate();
-        GetMoveInput();
-        FlipX();
+        if (CanMove)
+        {
+            Animate();
+            GetMoveInput();
+            FlipX();
+        }
+        else
+        {
+            _moveInput = Vector2.zero;
+            _anim.SetBool("move", false);
+        }
     }
 
     private void FixedUpdate()
@@ -76,7 +95,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void Animate()
     {
-        if (_moveInput.x != 0 || _moveInput.y != 0) _anim.SetBool("move", true);
-        else _anim.SetBool("move", false);
+        if (_moveInput.x != 0 || _moveInput.y != 0)
+        {
+            _anim.SetBool("move", true);
+
+            if (_canPlayMoveSFX)
+            {
+                _canPlayMoveSFX = false;
+                _audioManager.PlaySFX("Passos");
+                StartCoroutine(MoveSFXInterval(1.5f));
+            }
+        }
+        else
+        {
+            _anim.SetBool("move", false);
+        }
+    }
+
+    private IEnumerator MoveSFXInterval(float t)
+    {
+        yield return new WaitForSeconds(t);
+        _canPlayMoveSFX = true;
     }
 }

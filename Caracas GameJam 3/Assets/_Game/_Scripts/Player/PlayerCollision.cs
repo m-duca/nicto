@@ -20,8 +20,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private int objectiveLayer;
     [SerializeField] private int endLayer;
 
+    // References
+    private AudioManager _audioManager;
+
     // Components
     private SpriteRenderer _spr;
+    private PlayerMovement _playerMovement;
 
     // Score
     public static int Score;
@@ -35,7 +39,7 @@ public class PlayerCollision : MonoBehaviour
     // Decrease Score
     private bool _isDecreasing = false;
 
-    private static bool isEnd = false;
+    public static bool isEnd = false;
 
     // Objective
     private ObjectiveTrigger _currentObjective;
@@ -50,6 +54,8 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         _spr = GetComponent<SpriteRenderer>();
+        _playerMovement = GetComponent<PlayerMovement>();
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         //_defaultOrder = _spr.sortingOrder;
 
         if (Score != 0 && !isEnd)
@@ -70,11 +76,14 @@ public class PlayerCollision : MonoBehaviour
                 Instantiate(scoreIconPrefab, transform.position, Quaternion.identity);
             }
             _currentSwitch.ChangeLamps();
+            _audioManager.PlaySFX("Lampada ligando");
         }
 
         if (Input.GetButtonDown("Jump") && _currentObjective != null)
         {
             _currentObjective.CompleteObjective();
+            _audioManager.PlaySFX("ObjectiveMet");
+            StartCoroutine(PlayObjectiveFeedbackSFX(1f, _currentObjective.Level));
         }
 
         if (Score != 0 && !_isDecreasing)
@@ -98,10 +107,6 @@ public class PlayerCollision : MonoBehaviour
         else if (col.gameObject.layer == objectiveLayer)
         {
             _currentObjective = col.gameObject.GetComponent<ObjectiveTrigger>();
-        }
-        else if (col.gameObject.layer == endLayer)
-        {
-            End();
         }
     }
 
@@ -138,6 +143,12 @@ public class PlayerCollision : MonoBehaviour
                 lamp.ChangeLight();
             }
         }
+        else if (col.gameObject.layer == endLayer)
+        {
+            _audioManager.PlaySFX("ObjectiveMet");
+            DisableMove();
+            Invoke("End", 0.95f);
+        }
     }
 
     private void ChangeScore(int value)
@@ -148,18 +159,20 @@ public class PlayerCollision : MonoBehaviour
 
     private void GameOver(GameOvers type)
     {
+        DisableMove();
         switch (type)
         {
             case GameOvers.Dark:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                StartCoroutine(Restart(1f, SceneManager.GetActiveScene().name));
                 break;
             case GameOvers.Time:
                 Score = 0;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                StartCoroutine(Restart(1f, "Start"));
                 break;
 
             case GameOvers.Monster:
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                _audioManager.PlaySFX("Risada " + Random.Range(1, 3).ToString());
+                StartCoroutine(Restart(0.65f, SceneManager.GetActiveScene().name));
                 break;
         }
     }
@@ -172,10 +185,28 @@ public class PlayerCollision : MonoBehaviour
         StartCoroutine(DecreaseScore(decreaseScoreTime));
     }
 
+    private IEnumerator Restart(float t, string sceneName)
+    {
+        yield return new WaitForSeconds(t);
+        SceneManager.LoadScene(sceneName);
+    }
+
     private void End()
     {
         StopAllCoroutines();
         isEnd = true;
         SceneManager.LoadScene("End");
+    }
+
+    private void DisableMove()
+    {
+        _playerMovement.CanMove = false;
+    }
+
+    private IEnumerator PlayObjectiveFeedbackSFX(float t, string level)
+    {
+        yield return new WaitForSeconds(t);
+        if (level == "Kitchen") _audioManager.PlaySFX("Bebendo");
+        else if (level == "Bathroom") _audioManager.PlaySFX("Mijando");
     }
 }

@@ -2233,6 +2233,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 492228666}
     - target: {fileID: 4905604972394759747, guid: 3225e911ce7336f44879a7b0cb8ea6a1, type: 3}
+      propertyPath: name
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4905604972394759747, guid: 3225e911ce7336f44879a7b0cb8ea6a1, type: 3}
       propertyPath: wall
       value: 
       objectReference: {fileID: 1896851504}

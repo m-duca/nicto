@@ -1194,6 +1194,62 @@ MonoBehaviour:
   decalTexScale: {x: 0, y: 0}
   isLowResolution: 0
   resolutions: {x: 0, y: 0}
+--- !u!1 &1027104039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027104041}
+  - component: {fileID: 1027104040}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027104040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027104039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46410ceaeb00f1540b1afb789471689c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musics:
+  - {fileID: 11400000, guid: f86a2d2441940eb4e9d54a68ccd17b03, type: 2}
+  sfxs:
+  - {fileID: 11400000, guid: 42a19ee036519064d94d5b00884d3109, type: 2}
+  - {fileID: 11400000, guid: 1484252596f1faa4e9171346ca10638e, type: 2}
+  - {fileID: 11400000, guid: f155effaafd8ebf44be29d9d0ad84be7, type: 2}
+  - {fileID: 11400000, guid: d1d382bbed6489243b0760c3f74bce67, type: 2}
+  - {fileID: 11400000, guid: a8798bef8934d504dad1f85e22622e33, type: 2}
+  - {fileID: 11400000, guid: f1e3f1526cc52534fa85a1d0107f1424, type: 2}
+  - {fileID: 11400000, guid: 520e75dc7d08065438e74173eead2b9c, type: 2}
+  - {fileID: 11400000, guid: 6e32921b38e65bb4e89d8968496cc060, type: 2}
+  masterVolume: 1
+--- !u!4 &1027104041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027104039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 372.96527, y: 295.1706, z: -2.8692915}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1149475696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e524aeb35ee4e747b4f30fca71866b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioManager: {fileID: 1027104040}
   nextLevel: Bedroom
 --- !u!1 &1676442010
 GameObject:
