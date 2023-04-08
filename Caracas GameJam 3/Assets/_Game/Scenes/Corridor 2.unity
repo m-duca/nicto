@@ -318,6 +318,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+      propertyPath: ScoreOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
       propertyPath: nextSwitch
       value: 
       objectReference: {fileID: 1419036534}
@@ -1421,6 +1425,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+      propertyPath: ScoreOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
       propertyPath: lamps.Array.size
       value: 1

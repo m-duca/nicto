@@ -14,12 +14,8 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private int decrease;
 
     [Header("Collision Layers:")] 
-    [SerializeField] private int enemyLayer;
-    [SerializeField] private int lampLayer;
-    [SerializeField] private int switchLayer;
-    [SerializeField] private int objectiveLayer;
-    [SerializeField] private int endLayer;
-
+    [SerializeField] private CollisionLayers collisionLayers;
+    
     // References
     private AudioManager _audioManager;
 
@@ -29,6 +25,7 @@ public class PlayerCollision : MonoBehaviour
 
     // Score
     public static int Score;
+    public static int ScoreCount = -1;
 
     // Switch
     private Switch _currentSwitch;
@@ -43,6 +40,8 @@ public class PlayerCollision : MonoBehaviour
 
     // Objective
     private ObjectiveTrigger _currentObjective;
+
+    private bool _canPlayDarkSFX = true;
 
     private enum GameOvers
     {
@@ -71,19 +70,24 @@ public class PlayerCollision : MonoBehaviour
         {
             if (_currentSwitch.lamps[0].VisibleDark && !_currentSwitch.AlreadyScored)
             {
-                ChangeScore(increase);
-                _currentSwitch.AlreadyScored = true;
-                Instantiate(scoreIconPrefab, transform.position, Quaternion.identity);
+                if (ScoreCount < _currentSwitch.ScoreOrder)
+                {
+                    ChangeScore(increase);
+                    _currentSwitch.AlreadyScored = true;
+                    ScoreCount++;
+                    Instantiate(scoreIconPrefab, transform.position, Quaternion.identity);
+                }
             }
             _currentSwitch.ChangeLamps();
             _audioManager.PlaySFX("Lampada ligando");
         }
 
-        if (Input.GetButtonDown("Jump") && _currentObjective != null)
+        if (Input.GetButtonDown("Jump") && _currentObjective != null && _currentObjective.enabled)
         {
             _currentObjective.CompleteObjective();
             _audioManager.PlaySFX("ObjectiveMet");
             StartCoroutine(PlayObjectiveFeedbackSFX(1f, _currentObjective.Level));
+            _currentObjective.enabled = false;
         }
 
         if (Score != 0 && !_isDecreasing)
@@ -95,16 +99,23 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.layer == lampLayer)
+        if (col.gameObject.layer == collisionLayers.LampLayer)
         {
             var lamp = col.gameObject.GetComponent<LampStatus>();
+            if (!lamp.IsOn && _canPlayDarkSFX)
+            {
+                _canPlayDarkSFX = false;
+                _audioManager.PlaySFX("Escuro");
+                StartCoroutine(DarkSFXInterval(8.75f));
+            }
+
             if (!lamp.IsOn && !lamp.VisibleDark) GameOver(GameOvers.Dark);
         }
-        else if (col.gameObject.layer == switchLayer)
+        else if (col.gameObject.layer == collisionLayers.SwitchLayer)
         {
             _currentSwitch = col.gameObject.GetComponent<Switch>();
         }
-        else if (col.gameObject.layer == objectiveLayer)
+        else if (col.gameObject.layer == collisionLayers.ObjectiveLayer)
         {
             _currentObjective = col.gameObject.GetComponent<ObjectiveTrigger>();
         }
@@ -112,12 +123,12 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.layer == switchLayer)
+        if (col.gameObject.layer == collisionLayers.SwitchLayer)
         {
             _currentSwitch.StartCooldown();
             _currentSwitch = null;
         }
-        else if (col.gameObject.layer == objectiveLayer)
+        else if (col.gameObject.layer == collisionLayers.ObjectiveLayer)
         {
             _currentObjective = null;
         }
@@ -127,12 +138,12 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == enemyLayer)
+        if (col.gameObject.layer == collisionLayers.EnemyLayer)
         {
             GameOver(GameOvers.Monster);
         }
 
-        if (col.gameObject.layer == lampLayer)
+        if (col.gameObject.layer == collisionLayers.LampLayer)
         {
             var lamp = col.gameObject.GetComponent<LampStatus>();
             //_spr.sortingOrder = lamp.darkSpr.sortingOrder;
@@ -143,11 +154,16 @@ public class PlayerCollision : MonoBehaviour
                 lamp.ChangeLight();
             }
         }
-        else if (col.gameObject.layer == endLayer)
+        else if (col.gameObject.layer == collisionLayers.TriggerEndLayer)
+        {
+            DisableMove();
+            End();
+        }
+        else if (col.gameObject.layer == collisionLayers.EggLayer)
         {
             _audioManager.PlaySFX("ObjectiveMet");
-            DisableMove();
-            Invoke("End", 0.95f);
+            PlayerMovement.MoveSpeed += 2f;
+            Destroy(col.gameObject);
         }
     }
 
@@ -208,5 +224,11 @@ public class PlayerCollision : MonoBehaviour
         yield return new WaitForSeconds(t);
         if (level == "Kitchen") _audioManager.PlaySFX("Bebendo");
         else if (level == "Bathroom") _audioManager.PlaySFX("Mijando");
+    }
+
+    private IEnumerator DarkSFXInterval(float t)
+    {
+        yield return new WaitForSeconds(t);
+        _canPlayDarkSFX = true;
     }
 }

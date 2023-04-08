@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInSpeed: 0
   fadeOutSpeed: 0.5
+  isFading: 0
 --- !u!1 &138246730603225015
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011491984, y: 0.05745995}
+  m_Offset: {x: -0.02930522, y: 0.05338025}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -178,7 +179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6858855, y: 0.6399176}
+  m_Size: {x: 0.81643677, y: 0.648077}
   m_EdgeRadius: 0
 --- !u!114 &138246730603225008
 MonoBehaviour:
@@ -193,10 +194,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lamps: []
+  ScoreOrder: 0
   lampIcon: {fileID: 138246729461170484}
   LampIconSpr: {fileID: 138246729461170485}
   nextSwitch: {fileID: 0}
-  cooldownTime: 5
+  cooldownTime: 2
   Hitbox: {fileID: 0}
   AlreadyScored: 0
   _fade: {fileID: 7124556274315383147}

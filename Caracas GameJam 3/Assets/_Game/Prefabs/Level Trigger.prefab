@@ -72,4 +72,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: Bedroom
-  playerLayer: 9
+  collisionLayers: {fileID: 11400000, guid: f2f7f4b1f503c7e48b8f7cf8484cf827, type: 2}

@@ -7,6 +7,7 @@ public class Switch : MonoBehaviour
 {
     // Unity Access Fields
     public LampStatus[] lamps;
+    public int ScoreOrder;
     [SerializeField] private Animator lampIcon;
     public SpriteRenderer LampIconSpr;
     [SerializeField] private Switch nextSwitch;

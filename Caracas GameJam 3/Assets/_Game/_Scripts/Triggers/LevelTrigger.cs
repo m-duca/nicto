@@ -7,10 +7,14 @@ public class LevelTrigger : MonoBehaviour
 {
     [Header("Settings:")] 
     [SerializeField] private string scene;
-    [SerializeField] private int playerLayer;
+    [SerializeField] CollisionLayers collisionLayers;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer == playerLayer) SceneManager.LoadScene(scene);
+        if (col.gameObject.layer == collisionLayers.PlayerLayer)
+        {
+            PlayerCollision.ScoreCount = -1;
+            SceneManager.LoadScene(scene);
+        }
     }
 }

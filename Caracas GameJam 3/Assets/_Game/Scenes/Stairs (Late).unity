@@ -123,6 +123,79 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &31255541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 31255544}
+  - component: {fileID: 31255543}
+  - component: {fileID: 31255542}
+  m_Layer: 0
+  m_Name: Special Lamp Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &31255542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31255541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e606c45142184c43a605596e06094a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lampIcon: {fileID: 1455707102}
+  playerLayer: 9
+--- !u!61 &31255543
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31255541}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5, y: 0.23670769}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3.4734154}
+  m_EdgeRadius: 0
+--- !u!4 &31255544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31255541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.75, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &66236825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2077,7 +2150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4570916
+      value: 1.4937468
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalScale.y
@@ -2156,6 +2229,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+      propertyPath: ScoreOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
       propertyPath: nextSwitch
       value: 
       objectReference: {fileID: 2091362591}
@@ -2221,6 +2298,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+--- !u!114 &1455707102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7124556274315383147, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+  m_PrefabInstance: {fileID: 1455707101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a0ab78114cc244c9610a4b3b8a7b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489550316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,6 +3526,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+      propertyPath: ScoreOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
       propertyPath: nextSwitch
       value: 
       objectReference: {fileID: 1937718943}
@@ -3653,6 +3745,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
+      propertyPath: ScoreOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 138246730603225008, guid: 4b44137f6eb3e1a479cf0f53519e7873, type: 3}
       propertyPath: nextSwitch
       value: 

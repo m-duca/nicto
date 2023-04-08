@@ -19,7 +19,7 @@ public class MenuInput : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Start") _audioManager.PlayMusic("Musiquinha");
+        _audioManager.PlayMusic("Musiquinha");
     }
 
     private void Update()

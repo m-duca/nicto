@@ -50,7 +50,6 @@ MonoBehaviour:
   IsFalling: 0
   VisibleDark: 1
   dark: {fileID: 2674386269135471562}
-  darkSpr: {fileID: 2674386269135471563}
 --- !u!61 &1267167551600844082
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,3 +175,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInSpeed: 0.2
   fadeOutSpeed: 1
+  collisionLayers: {fileID: 11400000, guid: f2f7f4b1f503c7e48b8f7cf8484cf827, type: 2}
+  isFading: 0

@@ -149,7 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   moveDir: {x: 0, y: 0}
-  triggers: []
+  trigger: {fileID: 0}
+  triggerCooldownTime: 0
 --- !u!50 &3828840483380160585
 Rigidbody2D:
   serializedVersion: 4
@@ -185,3 +186,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInSpeed: 2
   fadeOutSpeed: 2
+  collisionLayers: {fileID: 11400000, guid: f2f7f4b1f503c7e48b8f7cf8484cf827, type: 2}
+  isFading: 0

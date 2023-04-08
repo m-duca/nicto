@@ -12,7 +12,6 @@ public class LampStatus : MonoBehaviour
 
     [Header("Dark:")] 
     [SerializeField] private FadeVFX dark;
-    public SpriteRenderer darkSpr;
 
     public void ChangeLight()
     {

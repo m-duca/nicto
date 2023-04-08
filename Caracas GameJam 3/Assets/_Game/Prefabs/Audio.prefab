@@ -47,11 +47,12 @@ MonoBehaviour:
   music: {fileID: 11400000, guid: f86a2d2441940eb4e9d54a68ccd17b03, type: 2}
   sfxs:
   - {fileID: 11400000, guid: 42a19ee036519064d94d5b00884d3109, type: 2}
-  - {fileID: 11400000, guid: 1484252596f1faa4e9171346ca10638e, type: 2}
+  - {fileID: 11400000, guid: c52ed4882b3b2ba4280280156f5abd21, type: 2}
   - {fileID: 11400000, guid: f155effaafd8ebf44be29d9d0ad84be7, type: 2}
   - {fileID: 11400000, guid: d1d382bbed6489243b0760c3f74bce67, type: 2}
   - {fileID: 11400000, guid: a8798bef8934d504dad1f85e22622e33, type: 2}
   - {fileID: 11400000, guid: f1e3f1526cc52534fa85a1d0107f1424, type: 2}
   - {fileID: 11400000, guid: 520e75dc7d08065438e74173eead2b9c, type: 2}
   - {fileID: 11400000, guid: 6e32921b38e65bb4e89d8968496cc060, type: 2}
+  - {fileID: 11400000, guid: 1484252596f1faa4e9171346ca10638e, type: 2}
   masterVolume: 1

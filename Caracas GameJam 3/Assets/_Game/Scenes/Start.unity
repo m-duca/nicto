@@ -473,17 +473,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &422984481 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3317793771245640973, guid: fa090fd2b5978374caa195b427d63296, type: 3}
-  m_PrefabInstance: {fileID: 3317793771632961068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46410ceaeb00f1540b1afb789471689c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &506864958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2071,7 +2060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e524aeb35ee4e747b4f30fca71866b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 422984481}
   nextLevel: Bedroom
 --- !u!1 &1676442010
 GameObject:

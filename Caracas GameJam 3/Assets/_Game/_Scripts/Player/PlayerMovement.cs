@@ -24,6 +24,13 @@ public class PlayerMovement : MonoBehaviour
 
     public bool CanMove = true;
 
+    public static float MoveSpeed = 0;
+
+    private void Awake()
+    {
+        if (MoveSpeed == 0) MoveSpeed = maxSpeed;
+    }
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -84,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyMove()
     {
-        _rb.velocity = SetVelocity(maxSpeed * _moveInput, _rb.velocity, acceleration);
+        _rb.velocity = SetVelocity(MoveSpeed * _moveInput, _rb.velocity, acceleration);
     }
 
     private void FlipX()

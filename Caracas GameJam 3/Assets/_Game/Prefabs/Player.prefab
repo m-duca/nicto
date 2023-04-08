@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   acceleration: 2
+  CanMove: 1
 --- !u!114 &2862487986247305781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,11 +157,7 @@ MonoBehaviour:
   scoreIconPrefab: {fileID: 4394188491903594379, guid: a9d0de5e5d8ea8b4da82798e4d61c62d, type: 3}
   decreaseScoreTime: 2
   decrease: 2
-  enemyLayer: 3
-  lampLayer: 6
-  switchLayer: 7
-  objectiveLayer: 10
-  endLayer: 12
+  collisionLayers: {fileID: 11400000, guid: f2f7f4b1f503c7e48b8f7cf8484cf827, type: 2}
 --- !u!95 &2862487986247305778
 Animator:
   serializedVersion: 5
