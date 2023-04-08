@@ -36,6 +36,12 @@ EditorBuildSettings:
     path: Assets/_Game/Scenes/Stairs (Late).unity
     guid: d10fdc57bf03312499ef02ef77d54d2c
   - enabled: 1
+    path: Assets/_Game/Scenes/Corridor 2 (Late).unity
+    guid: ba9226c0c25dfa04fb492e6c64e205f2
+  - enabled: 1
+    path: Assets/_Game/Scenes/Corridor 1 (Late).unity
+    guid: d141e31bcc56800429162d3d249e7f85
+  - enabled: 1
     path: Assets/_Game/Scenes/Bedroom (Late).unity
     guid: 2d4e67945acf4fd43b65988b1dd542e9
   - enabled: 1

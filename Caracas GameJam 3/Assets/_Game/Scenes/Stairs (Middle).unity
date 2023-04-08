@@ -1612,7 +1612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.729981
+      value: 0.710819
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalScale.y
@@ -1620,7 +1620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7147021
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1741,6 +1741,10 @@ PrefabInstance:
     - target: {fileID: 2674386268616593519, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674386269135471562, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
+      propertyPath: fadeInSpeed
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2674386269135471563, guid: 36f16a9f71d2fca48beb6b162900ce37, type: 3}
       propertyPath: m_Color.a
