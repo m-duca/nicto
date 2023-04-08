@@ -1092,7 +1092,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1631,8 +1631,8 @@ Tilemap:
   - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: bc8611d21f75a1d46b70941c0b224dc3, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: -39642340, guid: 980efdfacfd844c4680dbb767cbb73fe, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -959981949, guid: de5c9e036f2f32d4e84ce7c59936ad7e, type: 3}
   - m_RefCount: 66
@@ -1641,8 +1641,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -39642340, guid: 980efdfacfd844c4680dbb767cbb73fe, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 303493553, guid: 980efdfacfd844c4680dbb767cbb73fe, type: 3}
   - m_RefCount: 1
@@ -1975,6 +1975,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3828840483380160584, guid: 09193046f0d2e61448166d12a5867db2, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1902019952}
     - target: {fileID: 3828840483380160584, guid: 09193046f0d2e61448166d12a5867db2, type: 3}
       propertyPath: moveDir.x
       value: 1
@@ -4028,6 +4032,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3828840483380160584, guid: 09193046f0d2e61448166d12a5867db2, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 452316819}
     - target: {fileID: 3828840483380160584, guid: 09193046f0d2e61448166d12a5867db2, type: 3}
       propertyPath: moveDir.y
       value: -1

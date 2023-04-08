@@ -159,6 +159,7 @@ MonoBehaviour:
   lampLayer: 6
   switchLayer: 7
   objectiveLayer: 10
+  endLayer: 12
 --- !u!95 &2862487986247305778
 Animator:
   serializedVersion: 5

@@ -6,12 +6,11 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector2 moveDir;
-    [SerializeField] private Transform[] triggers;
+    [SerializeField] private Transform trigger;
     [SerializeField] private float triggerCooldownTime;
 
     // Components
     private Rigidbody2D _rb;
-    private SpriteRenderer _spr;
     private FadeVFX _fade;
 
     private Vector3 _warpPos;
@@ -45,16 +44,8 @@ public class EnemyMovement : MonoBehaviour
             _lastDir = moveDir;
             moveDir = Vector2.zero;
             _fade.StartFade(FadeVFX.FadeType.FadeOut);
-            if (col.gameObject.transform == triggers[0])
-            {
-                StartCoroutine(TriggerCooldown(triggerCooldownTime, triggers[1].gameObject.GetComponent<BoxCollider2D>()));
-                _warpPos = triggers[1].position;
-            }
-            else
-            {
-                StartCoroutine(TriggerCooldown(triggerCooldownTime, triggers[0].gameObject.GetComponent<BoxCollider2D>()));
-                _warpPos = triggers[0].position;
-            }
+            StartCoroutine(TriggerCooldown(triggerCooldownTime, trigger.gameObject.GetComponent<BoxCollider2D>()));
+            _warpPos = trigger.position;
         }
     }
 

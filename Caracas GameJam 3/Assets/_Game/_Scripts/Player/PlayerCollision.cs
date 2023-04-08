@@ -17,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private int lampLayer;
     [SerializeField] private int switchLayer;
     [SerializeField] private int objectiveLayer;
+    [SerializeField] private int endLayer;
 
     // Components
     private SpriteRenderer _spr;
@@ -33,6 +34,8 @@ public class PlayerCollision : MonoBehaviour
     // Decrease Score
     private bool _isDecreasing = false;
 
+    private static bool isEnd = false;
+
     // Objective
     private ObjectiveTrigger _currentObjective;
 
@@ -48,7 +51,7 @@ public class PlayerCollision : MonoBehaviour
         _spr = GetComponent<SpriteRenderer>();
         //_defaultOrder = _spr.sortingOrder;
 
-        if (Score != 0)
+        if (Score != 0 && !isEnd)
         {
             _isDecreasing = true;
             StartCoroutine(DecreaseScore(decreaseScoreTime));
@@ -93,6 +96,10 @@ public class PlayerCollision : MonoBehaviour
         else if (col.gameObject.layer == objectiveLayer)
         {
             _currentObjective = col.gameObject.GetComponent<ObjectiveTrigger>();
+        }
+        else if (col.gameObject.layer == endLayer)
+        {
+            End();
         }
     }
 
@@ -161,5 +168,12 @@ public class PlayerCollision : MonoBehaviour
         ChangeScore(-decrease);
 
         StartCoroutine(DecreaseScore(decreaseScoreTime));
+    }
+
+    private void End()
+    {
+        StopAllCoroutines();
+        isEnd = true;
+        SceneManager.LoadScene("End");
     }
 }
