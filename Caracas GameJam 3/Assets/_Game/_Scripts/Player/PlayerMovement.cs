@@ -110,7 +110,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 _canPlayMoveSFX = false;
                 _audioManager.PlaySFX("Passos");
-                StartCoroutine(MoveSFXInterval(1.5f));
+                StartCoroutine(MoveSFXInterval(0.35f));
+                //StartCoroutine(MoveSFXInterval(1.5f));
             }
         }
         else

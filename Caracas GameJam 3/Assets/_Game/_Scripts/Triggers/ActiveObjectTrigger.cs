@@ -12,6 +12,7 @@ public class ActiveObjectTrigger : MonoBehaviour
         if (col.gameObject.layer == collisionLayers.PlayerLayer)
         {
             Destroy(gameObject, 5f);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 

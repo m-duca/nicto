@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Passos SFX
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 4fa81f90aaa373b4fa16574cfd87eb01, type: 3}
-  Volume: 0.6
+  Volume: 0.8
